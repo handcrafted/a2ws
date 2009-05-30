@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'httparty'
 require 'mash'
+require 'activesupport'
 require 'pp'
 
 module A2WS
@@ -22,7 +23,9 @@ module A2WS
 
       items = result["ItemSearchResponse"]["Items"]
       if items['Request']['IsValid'] == 'True'
-        items['Item'].collect {|i| i['ItemAttributes'].to_mash }
+        items['Item'].collect do |i|
+          i['ItemAttributes'].inject({}) {|h, j| h[j.first.titlecase.downcase.gsub(' ', '_')] = j.last ; h}.to_mash
+        end
       else
         raise items['Request']['Errors']['Error']['Message']
       end
