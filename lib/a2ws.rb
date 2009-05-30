@@ -18,7 +18,7 @@ module A2WS
       self.class.default_params :SearchIndex => search_index,  :AWSAccessKeyId => api_key
     end
 
-    def query(options = {})
+    def find(options = {})
       result = self.class.get('/onca/xml', options)
 
       items = result["ItemSearchResponse"]["Items"]
