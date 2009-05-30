@@ -1,6 +1,6 @@
 = a2ws
 
-Description goes here.
+Wrapper for Amazon Associates Web Services
 
 == Copyright
 

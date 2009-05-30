@@ -5,11 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "a2ws"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{Wrapper for Amazon Associates Web Service (A2WS).}
     gem.email = "andy@shenie.info"
     gem.homepage = "http://github.com/shenie/a2ws"
     gem.authors = ["Andy Shen"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency('httparty', '>= 0.4.3')
   end
 
 rescue LoadError
