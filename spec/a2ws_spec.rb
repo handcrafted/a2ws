@@ -1,6 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'yaml'
-require 'pp'
 
 include A2WS
 
@@ -13,13 +12,17 @@ describe "A2WS Operations" do
 
     it "should require SearchIndex" do
       search = ItemSearch.new(access_key, nil)
-      result = search.query
-      result['Request']['IsValid'].should == 'False'
+      lambda {search.query}.should raise_error
     end
 
     it "should find some items" do
       search = ItemSearch.new(access_key, :Books)
       search.query(:query => {:Title => 'Harry Potter'}).size.should_not == 0
+    end
+
+    it "should return Mash result" do
+      search = ItemSearch.new(access_key, :Books)
+      search.query(:query => {:Title => 'Harry Potter'}).first.should be_a(Mash)
     end
 
   end

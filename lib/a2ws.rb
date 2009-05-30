@@ -1,6 +1,7 @@
 require 'rubygems'
-gem 'httparty', '0.4.3'
 require 'httparty'
+require 'mash'
+require 'pp'
 
 module A2WS
   class Base
@@ -18,7 +19,13 @@ module A2WS
 
     def query(options = {})
       result = self.class.get('/onca/xml', options)
-      result["ItemSearchResponse"]["Items"]
+
+      items = result["ItemSearchResponse"]["Items"]
+      if items['Request']['IsValid'] == 'True'
+        items['Item'].collect {|i| i['ItemAttributes'].to_mash }
+      else
+        raise items['Request']['Errors']['Error']['Message']
+      end
     end
   end
   
