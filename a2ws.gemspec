@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION.yml",
+     "a2ws.gemspec",
      "lib/a2ws.rb",
      "spec/a2ws_spec.rb",
      "spec/spec_helper.rb"
@@ -41,15 +42,15 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<httparty>, [">= 0.4.3"])
       s.add_runtime_dependency(%q<mbleigh-mash>, [">= 0.0.6"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 2.3.2"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 2.2.2"])
     else
       s.add_dependency(%q<httparty>, [">= 0.4.3"])
       s.add_dependency(%q<mbleigh-mash>, [">= 0.0.6"])
-      s.add_dependency(%q<activesupport>, [">= 2.3.2"])
+      s.add_dependency(%q<activesupport>, [">= 2.2.2"])
     end
   else
     s.add_dependency(%q<httparty>, [">= 0.4.3"])
     s.add_dependency(%q<mbleigh-mash>, [">= 0.0.6"])
-    s.add_dependency(%q<activesupport>, [">= 2.3.2"])
+    s.add_dependency(%q<activesupport>, [">= 2.2.2"])
   end
 end
