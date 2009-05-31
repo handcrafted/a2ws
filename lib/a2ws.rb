@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'httparty'
-require 'mash'
 require 'activesupport'
 require 'pp'
 

@@ -17,12 +17,7 @@ describe "A2WS Operations" do
 
     it "should find some items" do
       search = ItemSearch.new(access_key, :Books)
-      search.find(:query => {:Title => 'Harry Potter'}).size.should_not == 0
-    end
-
-    it "should return Mash result" do
-      search = ItemSearch.new(access_key, :Books)
-      search.find(:query => {:Title => 'Harry Potter'}).first.should be_a(Mash)
+      search.find(nil, :Title => 'Harry Potter').size.should_not == 0
     end
 
   end

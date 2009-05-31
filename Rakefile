@@ -11,7 +11,6 @@ begin
     gem.authors = ["Andy Shen", "Josh Owens"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.add_dependency('httparty', '>= 0.4.3')
-    gem.add_dependency('mbleigh-mash', '>= 0.0.6')
     gem.add_dependency('activesupport', '>= 2.2.2')
   end
 
