@@ -3,9 +3,8 @@ module A2WS
   class ItemSearch < Base
     attr_accessor :items, :search_index
 
-    def initialize(api_key, search_index = :All)
+    def initialize(search_index = :All)
       @search_index = search_index
-      self.class.default_params :AWSAccessKeyId => api_key
     end
 
     def find(keywords, options = {})

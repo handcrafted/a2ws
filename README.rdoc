@@ -2,6 +2,11 @@
 
 Wrapper for Amazon Associates Web Services
 
+== How to configure access key to A2WS
+A2WS::Base.configure do |config|
+  config.api_key = 'ACCESS KEY ID'
+end
+
 == Copyright
 
 Copyright (c) 2009 Andy Shen. See LICENSE for details.

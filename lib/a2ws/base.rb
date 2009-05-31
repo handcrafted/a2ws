@@ -4,6 +4,14 @@ module A2WS
     base_uri 'http://ecs.amazonaws.com'
     default_params :Service => 'AWSECommerceService', :Operation => 'ItemSearch'
     
+    def self.configure
+      yield self
+    end
+    
+    def self.api_key=(key)
+      default_params :AWSAccessKeyId => key
+    end
+    
     private
     
     def downcase_keys(hash)
