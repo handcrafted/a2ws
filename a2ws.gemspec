@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{a2ws}
-  s.version = "0.0.3"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Shen"]
-  s.date = %q{2009-05-30}
+  s.date = %q{2009-05-31}
   s.email = %q{andy@shenie.info}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -21,6 +21,11 @@ Gem::Specification.new do |s|
      "VERSION.yml",
      "a2ws.gemspec",
      "lib/a2ws.rb",
+     "lib/a2ws/base.rb",
+     "lib/a2ws/image.rb",
+     "lib/a2ws/image_search.rb",
+     "lib/a2ws/item.rb",
+     "lib/a2ws/item_search.rb",
      "spec/a2ws_spec.rb",
      "spec/spec_helper.rb"
   ]
