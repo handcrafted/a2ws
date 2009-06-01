@@ -9,7 +9,6 @@ module A2WS
 
     def find(keywords, options = {})
       options.merge!({:Keywords => keywords, :SearchIndex => @search_index})
-      puts options.inspect
       result = self.class.get('/onca/xml', :query => options)
 
       @items = result["ItemSearchResponse"]["Items"]
