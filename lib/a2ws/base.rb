@@ -14,7 +14,7 @@ module A2WS
     
     private
     
-    def downcase_keys(hash)
+    def self.downcase_keys(hash)
       new_hash = {}
       hash.keys.each do |key|
         value = hash.delete(key)
@@ -25,7 +25,7 @@ module A2WS
       new_hash
     end
     
-    def downcase_key(key)
+    def self.downcase_key(key)
       key.titlecase.downcase.gsub(' ', '_')
     end
     

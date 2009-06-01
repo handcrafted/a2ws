@@ -2,18 +2,17 @@ module A2WS
 
 
   class ImageSearch < Base
-    attr_accessor :item_id
     
-    def initialize(item_id)
-      @item_id = item_id
-    end
-    
-    def find
-      self.class.default_params :ResponseGroup => "Images"
-      result = self.class.get('/onca/xml', :query => {:ItemId => @item_id, :Operation => "ItemLookup"})
-      result["ItemLookupResponse"]["Items"]["Item"].delete("ImageSets")
-      result["ItemLookupResponse"]["Items"]["Item"].delete("ASIN")
-      downcase_keys(result["ItemLookupResponse"]["Items"]["Item"]).collect { |size, data| Image.new(size, data) }
+    def self.find(item) 
+      items = get('/onca/xml', :query => {:ItemId => item, :Operation => "ItemLookup", :ResponseGroup => "Images"})
+      puts items.inspect
+      if items['ItemLookupResponse']["Items"]["Request"]['IsValid'] == 'True'
+        items["ItemLookupResponse"]["Items"]["Item"].delete("ImageSets")
+        items["ItemLookupResponse"]["Items"]["Item"].delete("ASIN")
+        downcase_keys(items["ItemLookupResponse"]["Items"]["Item"]).collect { |size, data| Image.new(size, data) }
+      else
+        raise items['Request']['Errors']['Error']['Message']
+      end
     end
     
   end

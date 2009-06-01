@@ -1,15 +1,10 @@
 module A2WS
 
   class ItemSearch < Base
-    attr_accessor :search_index
 
-    def initialize(search_index = :All)
-      @search_index = search_index
-    end
-
-    def find(keywords, options = {})
-      options.merge!({:Keywords => keywords, :SearchIndex => @search_index})
-      result = self.class.get('/onca/xml', :query => options)
+    def self.find(keywords, search_index = :All, options = {})
+      options.merge!({:Keywords => keywords, :SearchIndex => search_index})
+      result = get('/onca/xml', :query => options)
 
       items = result["ItemSearchResponse"]["Items"]
       if items['Request']['IsValid'] == 'True'
