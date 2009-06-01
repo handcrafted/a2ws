@@ -1,7 +1,7 @@
 module A2WS
 
   class ItemSearch < Base
-    attr_accessor :items, :search_index
+    attr_accessor :search_index
 
     def initialize(search_index = :All)
       @search_index = search_index
@@ -11,13 +11,13 @@ module A2WS
       options.merge!({:Keywords => keywords, :SearchIndex => @search_index})
       result = self.class.get('/onca/xml', :query => options)
 
-      @items = result["ItemSearchResponse"]["Items"]
-      if @items['Request']['IsValid'] == 'True'
-        @items['Item'].collect do |i|
+      items = result["ItemSearchResponse"]["Items"]
+      if items['Request']['IsValid'] == 'True'
+        items['Item'].collect do |i|
           Item.new downcase_keys(i)
         end
       else
-        raise @items['Request']['Errors']['Error']['Message']
+        raise items['Request']['Errors']['Error']['Message']
       end
     end
     
