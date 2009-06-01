@@ -13,7 +13,7 @@ module A2WS
       result = self.class.get('/onca/xml', :query => {:ItemId => @item_id, :Operation => "ItemLookup"})
       result["ItemLookupResponse"]["Items"]["Item"].delete("ImageSets")
       result["ItemLookupResponse"]["Items"]["Item"].delete("ASIN")
-      downcase_keys(result["ItemLookupResponse"]["Items"]["Item"]).collect { |size, data| AW2S::Image.new(size, data) }
+      downcase_keys(result["ItemLookupResponse"]["Items"]["Item"]).collect { |size, data| Image.new(size, data) }
     end
     
   end

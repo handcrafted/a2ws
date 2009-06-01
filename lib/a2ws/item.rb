@@ -17,7 +17,7 @@ module A2WS
     end
   
     def method_missing(meth,*args)
-      if @item_hash.keys.include(meth.to_s)
+      if @item_hash.keys.include?(meth.to_s)
         @item_hash[meth.to_s]
       else
         super

@@ -15,7 +15,7 @@ module A2WS
       @items = result["ItemSearchResponse"]["Items"]
       if @items['Request']['IsValid'] == 'True'
         @items['Item'].collect do |i|
-          AW2S::Item.new downcase_keys(i)
+          Item.new downcase_keys(i)
         end
       else
         raise @items['Request']['Errors']['Error']['Message']
